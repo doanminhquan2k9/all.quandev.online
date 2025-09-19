@@ -1,0 +1,173 @@
+
+    <script>
+      // Create stars
+      const starsContainer = document.getElementById("stars");
+      for (let i = 0; i < 150; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.width = `${Math.random() * 3}px`;
+        star.style.height = star.style.width;
+        star.style.setProperty("--duration", `${Math.random() * 5 + 3}s`);
+        starsContainer.appendChild(star);
+      }
+
+      // Glitch effect
+      const glitchText = document.querySelector(".glitch-text");
+      setInterval(() => {
+        glitchText.style.animation = "glitch 0.3s";
+        setTimeout(() => {
+          glitchText.style.animation = "";
+        }, 300);
+      }, 8000);
+    </script>
+  
+<div style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;font-weight:bold;">
+  <a href="https://miengiare.click" rel="dofollow" title="Miền giá rẻ chỉ từ 10K">Miền giá rẻ chỉ từ 10K - MienGiaRe.click</a>
+</div>
+
+<script>
+(() => {
+  const ADS = [
+    { message: "🔥 Miền giá rẻ chỉ từ 10K tại MienGiaRe.click — Đăng ký ngay kẻo hết!", url: "https://miengiare.click", buttonText: "Mua ngay" },
+    { message: "🌐 Tạo subdomain miễn phí tại MinhDuyDev — nhanh chóng & uy tín.", url: "https://sub.thangle.io.vn", buttonText: "Tạo ngay" },
+    { message: "🚀 Hệ thống buff dịch vụ MXH cực mạnh tại Subre98.com — Chạy nhanh, giá ngon!", url: "https://subre98.com", buttonText: "Truy cập ngay" }
+  ];
+  const KEY_HIDE_TODAY = "tl_hide_until";
+  const KEY_SNOOZE = "tl_snooze_until";
+  const now = Date.now();
+  const hideUntil = parseInt(localStorage.getItem(KEY_HIDE_TODAY) || "0", 10);
+  const snoozeUntil = parseInt(localStorage.getItem(KEY_SNOOZE) || "0", 10);
+  if (now < hideUntil || now < snoozeUntil) return;
+
+  const host = document.createElement("div");
+  host.style.position = "fixed";
+  host.style.insetInline = "0";
+  host.style.bottom = "0";
+  host.style.zIndex = "2147483000";
+  host.style.pointerEvents = "none";
+  (document.documentElement || document.body).appendChild(host);
+  const shadow = host.attachShadow({ mode: "open" });
+
+  const style = document.createElement("style");
+  style.textContent = `
+  :host, * { box-sizing: border-box; }
+  .wrap { pointer-events:auto; display:grid; place-items:center; padding: env(safe-area-inset-bottom, 0); }
+  .card {
+    --enter-transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
+    --fg: color-mix(in oklab, white 92%, black 0%);
+    --muted: color-mix(in oklab, var(--fg) 60%, transparent);
+    --ring: color-mix(in oklab, #6a5af9 60%, #8e54e9 40%);
+    font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    color: var(--fg);
+    background:
+      radial-gradient(1200px 200px at 50% 120%, color-mix(in oklab, var(--ring) 20%, transparent) 0%, transparent 60%),
+      color-mix(in oklab, #0b0b0c 80%, #141414 20%);
+    border: 1px solid color-mix(in oklab, white 8%, transparent);
+    box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    position: relative;
+    width: min(980px, calc(100vw - 20px));
+    border-radius: 16px;
+    margin: 0 auto calc(env(safe-area-inset-bottom, 0px) + 18px);
+    padding: 12px 16px 16px 12px;
+    transform: translateY(20px); opacity: 0;
+    transition: var(--enter-transition);
+  }
+  .card.show { transform: translateY(0); opacity: 1; }
+  .content { display:grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items:center; }
+  .logo { display:grid; place-items:center; width:28px; height:28px; border-radius:8px; background: linear-gradient(135deg, #6a5af9, #8e54e9); color:#fff; box-shadow: inset 0 0 8px rgba(255,255,255,.25); }
+  .icon svg { width:18px; height:18px; display:block; }
+  .title { font-weight:700; display:flex; gap:6px; align-items:center; }
+  .blink { width:8px; height:8px; border-radius:50%; background:#52ffa8; box-shadow:0 0 10px #52ffa8; animation:pulse 1.8s infinite; }
+  .desc { color: var(--muted); margin-top:2px; font-size:13px; }
+  .actions { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .btn { appearance:none; border:0; border-radius:10px; padding:10px 14px; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .btn-primary { background: linear-gradient(90deg, #6a5af9, #8e54e9); color:#fff; box-shadow: 0 6px 18px rgba(110,80,255,.35); }
+  .btn-ghost { background: transparent; color: var(--fg); border:1px solid color-mix(in oklab, white 12%, transparent); }
+  .close { position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:8px; display:grid; place-items:center; background:transparent; border:1px solid color-mix(in oklab, white 10%, transparent); }
+  .close svg { width:16px; height:16px; stroke:#fff; display:block; }
+  .foot { display:flex; gap:10px; align-items:center; justify-content:center; margin-top:10px; font-size:12px; color: color-mix(in oklab, var(--fg) 70%, transparent); }
+  .link { color:#8fd3ff; text-decoration: underline dotted; }
+  @keyframes pulse { 0%,100%{ transform: scale(.9); opacity:.7 } 50%{ transform: scale(1.1); opacity:1 } }
+  @media (max-width:560px){
+    .card{ width:min(560px, calc(100vw - 16px)); border-radius:14px; padding:14px 16px 16px 12px; }
+    .content{ grid-template-columns:24px 1fr; row-gap:8px; }
+    .logo{ width:24px; height:24px; border-radius:7px; }
+    .actions{ grid-column:1 / -1; width:100%; gap:10px; }
+    .btn{ flex:1; min-height:40px; text-align:center; }
+    .close{ top:8px; right:8px; width:30px; height:30px; }
+  }
+  `;
+  shadow.appendChild(style);
+
+  const wrap = document.createElement("div");
+  wrap.className = "wrap";
+  wrap.innerHTML = `
+    <section class="card" role="dialog" aria-live="polite" aria-label="Banner">
+      <div class="content">
+        <div class="logo icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l1.9 5.7L20 9l-6.1 1.3L12 16l-1.9-5.7L4 9l6.1-1.3L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="text">
+          <div class="title"><span class="blink" aria-hidden="true"></span><span id="brand">MinhDuyDev</span></div>
+          <div class="desc" id="desc"></div>
+        </div>
+        <div class="actions">
+          <button id="cta" class="btn btn-primary" type="button"></button>
+          <button id="snooze" class="btn btn-ghost" type="button" title="Ẩn 4 giờ">Nhắc sau</button>
+        </div>
+        <button id="close" class="close" type="button" aria-label="Đóng">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      </section>
+  `;
+  shadow.appendChild(wrap);
+
+  const card = shadow.querySelector(".card");
+  const elDesc = shadow.getElementById("desc");
+  const elCTA = shadow.getElementById("cta");
+  let i = 0, timer;
+
+  function render() {
+    const ad = ADS[i];
+    elDesc.textContent = ad.message;
+    elCTA.textContent = ad.buttonText;
+    elCTA.onclick = () => window.open(ad.url, "_blank", "noopener");
+    i = (i + 1) % ADS.length;
+  }
+  render();
+  timer = setInterval(render, 10000);
+
+  const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) {
+    card.style.setProperty("--enter-transition", "opacity .2s ease");
+    const b = shadow.querySelector(".blink"); if (b) b.style.animation = "none";
+  }
+  requestAnimationFrame(() => card.classList.add("show"));
+
+  shadow.getElementById("snooze").addEventListener("click", () => {
+    clearInterval(timer);
+    const fourH = Date.now() + 4 * 60 * 60 * 1000;
+    localStorage.setItem(KEY_SNOOZE, String(fourH));
+    destroy();
+  });
+
+  shadow.getElementById("close").addEventListener("click", () => {
+    clearInterval(timer);
+    const end = new Date(); end.setHours(23,59,59,999);
+    localStorage.setItem(KEY_HIDE_TODAY, String(end.getTime()));
+    destroy();
+  });
+
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { clearInterval(timer); destroy(); } }, { passive:true });
+
+  function destroy(){ card.classList.remove("show"); setTimeout(() => host.remove(), prefersReduced ? 100 : 280); }
+})();
+</script>
+</body>
+</html>
