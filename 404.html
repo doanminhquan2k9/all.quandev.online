@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Không tìm thấy trang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #f0f2f5;
+            --text-color: #1c1e21;
+            --primary-color: #007bff;
+            --primary-hover-color: #0056b3;
+            --card-background: #ffffff;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: var(--card-background);
+            padding: 50px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            max-width: 500px;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .illustration {
+            width: 180px;
+            height: auto;
+            margin-bottom: 30px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 15px;
+            color: var(--primary-color);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 0 0 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #606770;
+            margin: 0 0 30px;
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #e4e6eb;
+            color: var(--text-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d8dbe0;
+            transform: translateY(-2px);
+        }
+
+        /* Animation for the illustration */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 480px) {
+            .container {
+                padding: 40px 25px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .illustration {
+                width: 150px;
+            }
+            .actions {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" alt="Biểu tượng la bàn lạc đường" class="illustration">
+        
+        <h1>404</h1>
+        <h2>Ôi không! Có vẻ bạn đã lạc đường.</h2>
+        <p>
+            Trang bạn đang tìm kiếm không tồn tại, có thể đã bị di chuyển hoặc bạn đã nhập sai địa chỉ. Đừng lo, hãy thử các lựa chọn dưới đây.
+        </p>
+        
+        <div class="actions">
+            <a href="/" class="btn btn-primary">Về Trang Chủ</a>
+            <a href="/contact" class="btn btn-secondary">Liên Hệ Hỗ Trợ</a>
+        </div>
+    </div>
+
+</body>
+</html>
